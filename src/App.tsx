@@ -7,7 +7,7 @@ import {
   Navbar,
   VideoDetail,
   SeacrhFeed,
-  ChanelDetail,
+  ChannelDetail,
 } from "./components";
 
 type Props = {};
@@ -20,7 +20,7 @@ export const App: FC<Props> = (props) => {
         <Routes>
           <Route path={"/"} element={<Feed />} />
           <Route path={"/video/:id"} element={<VideoDetail />} />
-          <Route path={"/chanel/:id"} element={<ChanelDetail />} />
+          <Route path={"/channel/:id"} element={<ChannelDetail />} />
 
           <Route path={"/search/:searchTerm"} element={<SeacrhFeed />} />
         </Routes>
