@@ -10,18 +10,16 @@ var _0x9556 = [
 
 const youtube_api_key = _0x9556[0];
 
-const options = {
-  params: {
-    maxResults: 50,
-  },
-  headers: {
-    "X-RapidAPI-Key": youtube_api_key,
-    "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
-  },
-};
-
-export const fetchFromAPI = async (url: string) => {
-  const { data } = await axios.get(`${BASE_URL}/${url}`, options);
+export const fetchFromAPI = async (url: string, count?: number) => {
+  const { data } = await axios.get(`${BASE_URL}/${url}`, {
+    params: {
+      maxResults: count || 50,
+    },
+    headers: {
+      "X-RapidAPI-Key": youtube_api_key,
+      "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
+    },
+  });
 
   return data;
 };

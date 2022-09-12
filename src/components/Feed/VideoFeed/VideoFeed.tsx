@@ -7,9 +7,10 @@ import { VideoPlaylist } from "./VideoPlaylist";
 
 type Props = {
   data: VideoProps[];
+  direction?: "column" | "row" | "column-reverse" | "row-reverse";
 };
 
-export const VideoFeed: FC<Props> = ({ data }) => {
+export const VideoFeed: FC<Props> = ({ data, direction = "row" }) => {
   return (
     <Box
       sx={{
@@ -23,6 +24,7 @@ export const VideoFeed: FC<Props> = ({ data }) => {
         wrap="wrap"
         alignItems="center"
         width="100%"
+        direction={direction}
         rowSpacing={3}
         columnSpacing={2}
       >

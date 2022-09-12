@@ -30,6 +30,13 @@ export type VideoProps = {
   };
   kind: string;
   snippet: VideoItemProps;
+  statistics?: {
+    hiddenSubscriberCount: boolean;
+    subscriberCount: string;
+    videoCount: string;
+    viewCount: string;
+    likeCount: string;
+  };
 };
 
 export type ChannelDetailsProps = {

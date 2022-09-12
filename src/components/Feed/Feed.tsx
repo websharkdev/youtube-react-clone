@@ -47,6 +47,7 @@ export const Feed: FC<Props> = (props) => {
         >
           Copyright {thisYear}
         </Typography>
+
         <Typography
           variant="caption"
           sx={{ color: "#d3d3d3", mt: 1, width: "100%" }}

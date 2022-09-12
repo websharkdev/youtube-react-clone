@@ -11,6 +11,7 @@ const Root = styled(Stack)(({ theme }) => ({
   position: "sticky",
   top: 0,
   background: "#000",
+  zIndex: 5,
 }));
 
 export const Navbar: FC<Props> = (props) => {
@@ -20,7 +21,6 @@ export const Navbar: FC<Props> = (props) => {
       alignItems={"center"}
       justifyContent={"space-between"}
       p={2}
-      sx={{}}
     >
       <Link to={"/"} style={{ display: "flex", alignItems: "center" }}>
         <img src={logo} alt={"Logo"} height={45} />
