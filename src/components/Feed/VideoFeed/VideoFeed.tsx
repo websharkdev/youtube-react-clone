@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box } from "@mui/material";
 import { FC, Fragment } from "react";
 import { VideoProps } from "../../../utils/types";
 import { ChannelItem } from "../../ChannelDetail/ChannelItem";
@@ -8,9 +8,14 @@ import { VideoPlaylist } from "./VideoPlaylist";
 type Props = {
   data: VideoProps[];
   direction?: "column" | "row" | "column-reverse" | "row-reverse";
+  videoItemClassName?: string;
 };
 
-export const VideoFeed: FC<Props> = ({ data, direction = "row" }) => {
+export const VideoFeed: FC<Props> = ({
+  data,
+  direction = "row",
+  videoItemClassName = "video-feed-item",
+}) => {
   return (
     <Box
       sx={{
@@ -18,20 +23,42 @@ export const VideoFeed: FC<Props> = ({ data, direction = "row" }) => {
         flex: 2,
         height: "100%",
       }}
+      key={data.length}
     >
-      <Grid
-        container
-        wrap="wrap"
-        alignItems="center"
-        width="100%"
-        direction={direction}
-        rowSpacing={3}
-        columnSpacing={2}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexDirection: direction,
+          width: "100%",
+          flexWrap: "wrap",
+        }}
+        rowGap={3}
+        columnGap={2}
       >
-        {data.map((item: VideoProps, index: number) => (
-          <Fragment key={index}>
+        {data.map((item: any, index: number) => (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexDirection: "column",
+              width:
+                videoItemClassName === "video-feed-item"
+                  ? {
+                      xs: "calc(100% - 16px)",
+                      sm: "calc(50% - 16px)",
+                      md: "calc(33% - 16px)",
+                      xl: "calc(25% - 16px)",
+                    }
+                  : "100%",
+            }}
+            className={videoItemClassName}
+            key={index}
+          >
             {item && item.id && (
-              <Grid item xs={12} sm={6} lg={4} xl={3}>
+              <Fragment>
                 {item.id.videoId && (
                   <VideoItem id={item.id.videoId} data={item} />
                 )}
@@ -43,11 +70,11 @@ export const VideoFeed: FC<Props> = ({ data, direction = "row" }) => {
                 {item.id.channelId && (
                   <ChannelItem id={item.id?.channelId} data={item} />
                 )}
-              </Grid>
+              </Fragment>
             )}
-          </Fragment>
+          </Box>
         ))}
-      </Grid>
+      </Box>
     </Box>
   );
 };

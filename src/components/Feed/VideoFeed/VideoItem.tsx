@@ -25,7 +25,10 @@ export const VideoItem: FC<Props> = ({ data, id }) => {
           image={data?.snippet.thumbnails?.high?.url}
           alt={data?.snippet.title}
           component="img"
-          sx={{ width: "100%", minWidth: 320, height: 180 }}
+          sx={{
+            width: "100%",
+            height: 180,
+          }}
         />
       </Link>
 
@@ -36,7 +39,9 @@ export const VideoItem: FC<Props> = ({ data, id }) => {
           <Grid item>
             <Link to={id ? `/video/${id}` : demoVideoUrl} data-id={id}>
               <Typography variant="button" color="white">
-                {data.snippet.title.slice(0, 60)}
+                {data.snippet.title.length > 30
+                  ? `${data.snippet.title.slice(0, 30)}...`
+                  : data.snippet.title}
               </Typography>
             </Link>
           </Grid>
@@ -59,6 +64,32 @@ export const VideoItem: FC<Props> = ({ data, id }) => {
                   {data.snippet.channelTitle.slice(0, 60)}
                 </Typography>
                 <CheckCircle sx={{ fontSize: 12, ml: 1, color: "gray" }} />
+              </Box>
+            </Link>
+          </Grid>
+
+          <Grid item mt={3}>
+            <Link to={id ? `/video/${id}` : demoVideoUrl} data-id={id}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                <Typography
+                  variant="body2"
+                  color="gray"
+                  width={"calc(100% - 40px)"}
+                  sx={{
+                    height: 40,
+                    overflow: "hidden",
+                  }}
+                >
+                  {data.snippet.description.length > 120
+                    ? `${data.snippet.description.slice(0, 120)}...`
+                    : data.snippet.description}
+                </Typography>
               </Box>
             </Link>
           </Grid>

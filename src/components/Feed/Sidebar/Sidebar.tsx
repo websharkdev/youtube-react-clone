@@ -21,10 +21,21 @@ export const Sidebar: FC<Props> = ({
   return (
     <Stack
       direction={{ sm: "row", md: "column" }}
-      sx={{ overflowY: "auto", height: { sm: "auto", md: "95%" } }}
+      sx={{
+        overflowY: "auto",
+        height: { sm: "auto", md: "95%" },
+        px: 2,
+      }}
     >
       {categories.map((item: CategoriesItemProps) => (
-        <Box sx={{ mb: 2 }} key={item.id}>
+        <Box
+          sx={{
+            mr: { xs: 2, md: 0 },
+            mt: { xs: 2, md: 0 },
+            mb: 2,
+          }}
+          key={item.id}
+        >
           <SidebarItem
             name={item.name}
             icon={item.icon}

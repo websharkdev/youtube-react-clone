@@ -32,6 +32,8 @@ export const Feed: FC<Props> = (props) => {
         sx={{
           height: { sm: "auto", md: "100%" },
           borderRight: "1px solid #3d3d3d",
+
+          width: { md: "20%", xs: "auto" },
           p: { sm: 0, md: 3 },
         }}
       >
@@ -43,14 +45,24 @@ export const Feed: FC<Props> = (props) => {
         <Typography
           variant="body2"
           className="copyright"
-          sx={{ color: "#d3d3d3", mt: 7, width: "100%" }}
+          sx={{
+            color: "#d3d3d3",
+            mt: 7,
+            width: "100%",
+            display: { xs: "none", md: "flex" },
+          }}
         >
           Copyright {thisYear}
         </Typography>
 
         <Typography
           variant="caption"
-          sx={{ color: "#d3d3d3", mt: 1, width: "100%" }}
+          sx={{
+            color: "#d3d3d3",
+            mt: 1,
+            width: "100%",
+            display: { xs: "none", md: "flex" },
+          }}
         >
           @webshark.dev
         </Typography>
@@ -60,6 +72,7 @@ export const Feed: FC<Props> = (props) => {
         sx={{
           height: { sm: "auto", md: "100vh" },
           p: { sm: 0, md: 3 },
+          mt: { xs: 3, md: 0 },
           width: "100%",
         }}
       >

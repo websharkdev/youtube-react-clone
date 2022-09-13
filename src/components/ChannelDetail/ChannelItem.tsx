@@ -2,10 +2,10 @@ import { CheckCircle } from "@mui/icons-material";
 import { Box, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { VideoProps } from "../../utils/types";
+import { ChannelDetailsProps } from "../../utils/types";
 
 type Props = {
-  data: VideoProps;
+  data: ChannelDetailsProps;
   id: string;
 };
 
@@ -33,8 +33,13 @@ export const ChannelItem: FC<Props> = ({ data, id }) => {
               <CardMedia
                 component="img"
                 image={data?.snippet.thumbnails?.high.url}
-                alt={data.snippet.channelTitle}
-                sx={{ borderRadius: "50%", width: 180, height: 180, mb: 2 }}
+                alt={data.snippet.title}
+                sx={{
+                  borderRadius: "50%",
+                  width: 180,
+                  height: 180,
+                  mb: 2,
+                }}
               />
             </Grid>
 
@@ -46,7 +51,7 @@ export const ChannelItem: FC<Props> = ({ data, id }) => {
                 }}
               >
                 <Typography variant="h6" color="white">
-                  {data.snippet.channelTitle.slice(0, 60)}
+                  {data.snippet.title.slice(0, 60)}
                 </Typography>
                 <CheckCircle sx={{ fontSize: 12, ml: 1, color: "white" }} />
               </Box>

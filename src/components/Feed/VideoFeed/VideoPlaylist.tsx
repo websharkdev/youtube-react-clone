@@ -96,6 +96,28 @@ export const VideoPlaylist: FC<Props> = ({ data, id }) => {
               </Box>
             </Link>
           </Grid>
+
+          <Grid item mt={3}>
+            <Link to={id ? `/video/${id}` : demoVideoUrl} data-id={id}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                <Typography
+                  variant="body2"
+                  color="gray"
+                  width={"calc(100% - 40px)"}
+                >
+                  {data.snippet.description.length > 120
+                    ? `${data.snippet.description.slice(0, 120)}...`
+                    : data.snippet.description}
+                </Typography>
+              </Box>
+            </Link>
+          </Grid>
         </Grid>
       </CardContent>
     </Card>
