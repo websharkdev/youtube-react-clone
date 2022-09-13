@@ -5,6 +5,7 @@ import {
   CardContent,
   CardMedia,
   Grid,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import { FC } from "react";
@@ -69,9 +70,11 @@ export const VideoPlaylist: FC<Props> = ({ data, id }) => {
         <Grid container wrap="nowrap" direction="column">
           <Grid item>
             <Link to={id ? `/video/${id}` : demoVideoUrl} data-id={id}>
-              <Typography variant="button" color="white">
-                {data.snippet.title.slice(0, 60)}
-              </Typography>
+              <Tooltip title={data.snippet.title}>
+                <Typography variant="button" color="white">
+                  {data.snippet.title.slice(0, 60)}
+                </Typography>
+              </Tooltip>
             </Link>
           </Grid>
           <Grid item>

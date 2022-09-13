@@ -5,6 +5,7 @@ import {
   CardContent,
   CardMedia,
   Grid,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import { FC } from "react";
@@ -38,11 +39,13 @@ export const VideoItem: FC<Props> = ({ data, id }) => {
         <Grid container wrap="nowrap" direction="column">
           <Grid item>
             <Link to={id ? `/video/${id}` : demoVideoUrl} data-id={id}>
-              <Typography variant="button" color="white">
-                {data.snippet.title.length > 30
-                  ? `${data.snippet.title.slice(0, 30)}...`
-                  : data.snippet.title}
-              </Typography>
+              <Tooltip title={data.snippet.title}>
+                <Typography variant="button" color="white">
+                  {data.snippet.title.length > 30
+                    ? `${data.snippet.title.slice(0, 30)}...`
+                    : data.snippet.title}
+                </Typography>
+              </Tooltip>
             </Link>
           </Grid>
           <Grid item>
@@ -60,9 +63,12 @@ export const VideoItem: FC<Props> = ({ data, id }) => {
                   alignItems: "center",
                 }}
               >
-                <Typography variant="subtitle2" color="gray">
-                  {data.snippet.channelTitle.slice(0, 60)}
-                </Typography>
+                <Tooltip title={data.snippet.channelTitle}>
+                  <Typography variant="subtitle2" color="gray">
+                    {data.snippet.channelTitle.slice(0, 60)}
+                  </Typography>
+                </Tooltip>
+
                 <CheckCircle sx={{ fontSize: 12, ml: 1, color: "gray" }} />
               </Box>
             </Link>
