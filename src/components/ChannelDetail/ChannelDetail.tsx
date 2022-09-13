@@ -64,7 +64,7 @@ export const ChannelDetail: FC<Props> = (props) => {
         </Box>
       </Box>
       <Box p={4}>
-        <VideoFeed data={data} />
+        <VideoFeed data={data} justifyContent="flex-start" />
       </Box>
     </Box>
   );

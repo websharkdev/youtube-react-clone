@@ -8,6 +8,7 @@ import { VideoPlaylist } from "./VideoPlaylist";
 type Props = {
   data: VideoProps[];
   direction?: "column" | "row" | "column-reverse" | "row-reverse";
+  justifyContent?: string;
   videoItemClassName?: string;
 };
 
@@ -15,6 +16,7 @@ export const VideoFeed: FC<Props> = ({
   data,
   direction = "row",
   videoItemClassName = "video-feed-item",
+  justifyContent = "space-between",
 }) => {
   return (
     <Box
@@ -28,7 +30,7 @@ export const VideoFeed: FC<Props> = ({
       <Box
         sx={{
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: justifyContent,
           alignItems: "center",
           flexDirection: direction,
           width: "100%",

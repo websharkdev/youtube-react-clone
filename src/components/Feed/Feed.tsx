@@ -85,7 +85,7 @@ export const Feed: FC<Props> = (props) => {
           <span style={{ color: "#fff" }}>{selectedCategory}</span> video
         </Typography>
 
-        <VideoFeed data={videos} />
+        <VideoFeed data={videos} justifyContent="flex-start" />
       </Box>
     </Stack>
   );
